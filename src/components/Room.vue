@@ -1,8 +1,23 @@
 <script setup>
+import { ref } from 'vue';
 import ViewDoor from './ViewDoor.vue'
+
+const allAssetsLoaded = ref(false);
 </script>
 
 <template>
+  <a-assets @loaded="allAssetsLoaded = true">
+      <!--
+        Title: VR Gallery
+        Model source: https://sketchfab.com/3d-models/vr-gallery-1ac32ed62fdf424498acc146fad31f7e
+        Model author: https://sketchfab.com/mvrc.art (Maxim Mavrichev)
+        Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
+      -->
+      <!-- <a-asset-item  id="door" src="assets/door.glb"></a-asset-item> -->
+      <a-asset-item  id="elevator" src="assets/elevator_-_low_poly_animated.glb" ></a-asset-item>
+    </a-assets>
+
+
   <a-entity
     geometry="primitive: plane; height: 3; width: 3"
     position="0 0.01 0"
@@ -29,6 +44,15 @@ import ViewDoor from './ViewDoor.vue'
   ></a-entity>
   <ViewDoor rotation="0 -90 0" position="1.5 0 0"></ViewDoor>
   <ViewDoor rotation="0 180 0" position="0 0 1.5"></ViewDoor>
+
+    <a-entity
+      v-if="allAssetsLoaded"
+      gltf-model="#elevator"
+      rotation="0 90 0"
+      position="0 0 -5"
+      scale="1 1.1 1"
+      animation-mixer="loop:repeat"
+    ></a-entity>
   <!-- <ViewDoor rotation="0 -90 0" position="0 0 0"></ViewDoor> -->
   
 </template>
