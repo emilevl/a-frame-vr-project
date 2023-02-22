@@ -70,8 +70,8 @@
       v-if="allAssetsLoaded"
       gltf-model="#elevator"
       rotation="0 180 0"
-      position="0 0 3.2"
-      scale="0.9 0.9 0.9"
+      position="0 0 2.55"
+      scale="0.75 0.75 0.55"
       animation-mixer="loop: repeat"
     ></a-entity>
 
