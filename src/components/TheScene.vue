@@ -26,38 +26,54 @@
     background="color: black;"
     renderer="colorManagement: true;"
     :webxr="`
-      requiredFeatures: local-floor;
+    requiredFeatures: local-floor;
       referenceSpaceType: local-floor;
       optionalFeatures: dom-overlay;
       overlayElement: ${overlaySelector};
-    `"
-  > -->
-  
-  <a-scene
-    background="color: #87CEEB;"
-    stats
-    fog="type: linear; color: #a3d0ed; near: 2; far: 25;"
-  >
-
-  <!-- <a-entity light="color: #ffffff; type: directional; intensity: 8" position="-1 1 -8"></a-entity> -->
+      `"
+      > -->
+      
+      <a-scene
+      background="color: #87CEEB;"
+      stats
+      fog="type: linear; color: #a3d0ed; near: 2; far: 25;"
+      >
+      
+      <a-assets @loaded="allAssetsLoaded = true">
+        <!--
+          Title: VR Gallery
+          Model source: https://sketchfab.com/3d-models/vr-gallery-1ac32ed62fdf424498acc146fad31f7e
+          Model author: https://sketchfab.com/mvrc.art (Maxim Mavrichev)
+          Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
+        -->
+        <a-asset-item  id="elevator" src="assets/elevator_-_low_poly_animated.glb" ></a-asset-item>
+        <a-asset-item  id="room" src="assets/vr_gallery.glb"></a-asset-item>
+        <!-- <a-asset-item  id="test" src="assets/low_poly_simple_hallway_room.glb"></a-asset-item> -->
+      </a-assets>
+      <!-- <a-entity light="color: #ffffff; type: directional; intensity: 8" position="-1 1 -8"></a-entity> -->
   <!-- <a-entity light="color: #fb9062; type: directional; intensity: 2" position="-1 1 -9"></a-entity> -->
   <a-entity light="color: #87CEEB; type: ambient; intensity: 5" position="-1 1 -10"></a-entity>
   <!-- <a-entity light="color: #87CEEB; type: ambient; intensity: 0.2" position="-1 1 -10"></a-entity> -->
 
-  <Room></Room>
+  <Room position="0 0 0" rotation="0 90 0"></Room>
+  <Room position="0 0 -3" rotation="0 90 0"></Room>
+  <Room position="0 0 -6" rotation="0 90 0"></Room>
+  <Room position="3 0 -6" rotation="0 0 0"></Room>
+  <Room position="3 0 -3" rotation="0 0 0"></Room>
+  <Room position="6 0 -3" rotation="0 -90 0"></Room>
+  <Room position="6 0 -6" rotation="0 0 0"></Room>
+  <Room position="6 0 0" rotation="0 -90 0"></Room>
   
     <!-- <Room></Room> -->
   <!-- <TheHexagon :scale="scale" color="blue" position="0 0 5"></TheHexagon> -->
-    <!-- <a-assets @loaded="allAssetsLoaded = true"> -->
-      <!--
-        Title: VR Gallery
-        Model source: https://sketchfab.com/3d-models/vr-gallery-1ac32ed62fdf424498acc146fad31f7e
-        Model author: https://sketchfab.com/mvrc.art (Maxim Mavrichev)
-        Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
-      -->
-      <!-- <a-asset-item  id="room" src="assets/vr_gallery.glb"></a-asset-item> -->
-      <!-- <a-asset-item  id="test" src="assets/low_poly_simple_hallway_room.glb"></a-asset-item> -->
-    <!-- </a-assets> -->
+    <a-entity
+      v-if="allAssetsLoaded"
+      gltf-model="#elevator"
+      rotation="0 180 0"
+      position="0 0 3.2"
+      scale="0.9 0.9 0.9"
+      animation-mixer="loop: repeat"
+    ></a-entity>
 
     <!-- <a-entity
       v-if="allAssetsLoaded"
