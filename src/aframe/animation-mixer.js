@@ -39,7 +39,7 @@ const LoopMode = {
  * skeletal or morph animations through THREE.AnimationMixer.
  * See: https://threejs.org/docs/?q=animation#Reference/Animation/AnimationMixer
  */
-module.exports = AFRAME.registerComponent('animation-mixer', {
+AFRAME.registerComponent('animation-mixer', {
   schema: {
     clip: { default: '*' },
     duration: { default: 0 },
@@ -48,7 +48,8 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
     loop: { default: 'repeat', oneOf: Object.keys(LoopMode) },
     repetitions: { default: Infinity, min: 0 },
     timeScale: { default: 1 },
-    startAt: { default: 0 }
+    startAt: { default: 0 },
+    stopAt: { default: 100000 }
   },
 
   init: function () {
@@ -58,6 +59,7 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
     this.mixer = null;
     /** @type {Array<THREE.AnimationAction>} */
     this.activeActions = [];
+    this.elapsedTime = 0;
 
     const model = this.el.getObject3D('mesh');
 
@@ -157,7 +159,14 @@ module.exports = AFRAME.registerComponent('animation-mixer', {
   },
 
   tick: function (t, dt) {
-    if (this.mixer && !isNaN(dt)) this.mixer.update(dt / 1000);
+    if (this.mixer && !isNaN(dt)) {
+      this.elapsedTime += dt * this.data.timeScale;
+      if (this.elapsedTime >= this.data.stopAt) {
+        // console.log(dt, this.data.timeScale, this.elapsedTime);
+        return;
+      }
+      this.mixer.update(dt / 1000);
+    }
   }
 });
 

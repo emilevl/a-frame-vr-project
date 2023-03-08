@@ -1,5 +1,9 @@
 <script setup> 
+
 import { ref } from "vue";
+import "../aframe/animation-mixer";
+import '../aframe/clickable';
+import WallHole from "./WallHole.vue";
 defineProps({
     rotation: String,
     position: String,
@@ -9,38 +13,24 @@ defineProps({
 
 <template>
 
-    <a-entity :rotation="rotation" :position="position">
-        <a-entity
-            geometry="primitive: plane; height: 0.65; width: 3"
-            position="0 2.70 0"
-            rotation="0 0 0"
-            data-role="nav-mesh"
-            material="color: yellow"
-            visible="true"
-          ></a-entity>
-          <a-entity
-            geometry="primitive: plane; height: 2.5; width: 1"
-            position="-1 1.25 0"
-            rotation="0 0 0"
-            data-role="nav-mesh"
-            material="color: yellow"
-            visible="true"
-          ></a-entity>
-          <a-entity
-            geometry="primitive: plane; height: 2.5; width: 1"
-            position="1 1.25 0"
-            rotation="0 0 0"
-            data-role="nav-mesh"
-            material="color: yellow"
-            visible="true"
-          ></a-entity>
-          <a-entity
-            v-if="allAssetsLoaded"
-            gltf-model="#door"
-            rotation="0 -180 0"
-            position="0 0 -0.01"
-            scale="1 1.1 1"
-            animation-mixer="loop:repeat"
-            ></a-entity>
+  <a-entity :rotation="rotation" :position="position">
+    <a-light type="directional" position="0 2 1" target="#directionaltarget" rotation="-90 0 0"  intensity="0.05">
+      <a-entity id="directionaltarget" position="0 -0.7 -1"></a-entity>
+    </a-light>
+    <WallHole></WallHole>
+    
+    <a-entity
+      v-if="allAssetsLoaded"
+      data-role="door"
+      gltf-model="#door"
+      rotation="0 -180 0"
+      position="0 0 -0.01"
+      scale="1 1.1 1"
+      clickable
+      animation-mixer="loop:once; timeScale: 0; startAt: 3000; stopAt: 9000"
+      event-set__click="event: click; attribute:animation-mixer.timeScale; value:1 ;"
+      sound="src: #sound-door; on:click; loop: false;"
+    >
     </a-entity>
+  </a-entity>
 </template>

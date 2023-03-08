@@ -18,9 +18,9 @@
 <template>
   <div id="onboarding" v-if="showOnboarding">
     <div>
-      <h1>A-Frame + Vite + Vue Boilerplate</h1>
+      <h1>Escape room</h1>
       <p v-if="!loaded">loading...</p>
-      <button v-if="loaded" @click="enterScene()">Enter scene</button>
+      <button v-if="loaded" @click="enterScene()">Start</button>
       <div class="licences">
         <dl>
           <dt>
@@ -49,6 +49,30 @@
           </dt><dd>
             by <a href="https://sketchfab.com/mvrc.art" target="_blank">Maxim Mavrichev</a>
             under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </dd>
+
+          <dt>
+            <a href="https://skfb.ly/oCVrJ" target="_blank">Elevator - Low Poly Animated</a>
+          </dt><dd>
+            "Elevator - Low Poly Animated"
+            by JeffK is licensed under Creative Commons Attribution 
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </dd>
+
+          <dt>
+            <a href="https://skfb.ly/6zyTG" target="_blank">Door</a>
+          </dt><dd>
+            "Door"
+            by inter_net is licensed under Creative Commons Attribution
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </dd>
+
+          <dt>
+            <a href="https://skfb.ly/osJTH" target="_blank">Russian Poster 1</a>
+          </dt><dd>
+            "Russian Poster 1"
+            by Euphoria Collective is licensed under Creative Commons Attribution
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
           </dd>
         </dl>
       </div>
