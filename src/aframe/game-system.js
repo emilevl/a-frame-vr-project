@@ -66,11 +66,11 @@ AFRAME.registerSystem('game-system', {
     // },
 
     teleportCameraRig: function (x, y, z, rot = 0) {
-        console.log(x, y, z)
+        // console.log(x, y, z)
         this.data = {};
         this.data.rig = Dom.getNode("#camera-rig")
         this.data.camera = Dom.getNode("#head")
-        console.log(this.data)
+        // console.log(this.data)
 
         this.data.rig.object3D.position.x = x;
         this.data.rig.object3D.position.y = y;
