@@ -43,27 +43,11 @@ const allAssetsLoaded = ref(false);
       visible="false"
     ></a-entity>
     <a-entity
-      geometry="primitive: plane; height: 0.5; width: 1.2"
-      position="0 0.02 1.4"
-      rotation="-90 0 0"
-      data-role="nav-mesh"
-      material="color: blue"
-      visible="false"
-    ></a-entity>
-    <a-entity
-      geometry="primitive: plane; height: 1.2; width: 0.7"
-      position="1.4 0.02 0"
-      rotation="-90 0 0"
-      data-role="nav-mesh"
-      material="color: blue"
-      visible="false"
-    ></a-entity>
-    <a-entity
       geometry="primitive: plane; height: 3; width: 3;"
       position="0 3 0"
       rotation="90 0 0"
       data-role="nav-mesh"
-      material="src: #square-wall; repeat: 1 1"
+      material="color: #4a4a4a"
       visible="true"
     ></a-entity>
 
@@ -83,15 +67,16 @@ const allAssetsLoaded = ref(false);
       visible="true"
     ></a-entity>
     <WallHole rotation="0 90 0" position="-1.5 0 0"></WallHole>
-    <a-entity
-      v-if="allAssetsLoaded"
-      data-role="poster-wall"
-      gltf-model="#poster-wall"
-      position="1.492 1.75 -01"
-      rotation="0 0 0"
-      scale="0.45 0.45 0.45"  
-    ></a-entity>
-    <ViewDoor rotation="0 -90 0" position="1.5 0 0" :all-assets-loaded="allAssetsLoaded"></ViewDoor>
+    <!-- <a-entity
+      geometry="primitive: plane; height: 3; width: 3"
+      position="-1.5 1.5 0"
+      rotation="0 90 0"
+      data-role="nav-mesh"
+      material="src: #square-wall; repeat: 1 2"
+      visible="true"
+    ></a-entity> -->
+    <WallHole rotation="0 -90 0" position="1.5 0 0"></WallHole>
+    <!-- <ViewDoor rotation="0 -90 0" position="1.5 0 0" :all-assets-loaded="allAssetsLoaded"></ViewDoor> -->
     <ViewDoor rotation="0 180 0" position="0 0 1.5" :all-assets-loaded="allAssetsLoaded"></ViewDoor>
   </a-entity>
 </template>
