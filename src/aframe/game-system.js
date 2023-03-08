@@ -41,7 +41,7 @@ AFRAME.registerSystem('game-system', {
 
                     if (room.getAttribute('data-visited') == "false") {
                         // start the timer
-                        this.secondsRemaining = 25;
+                        this.secondsRemaining = 35;
                         room.setAttribute('data-visited', "true");
                     }
                 }

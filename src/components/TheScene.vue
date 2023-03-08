@@ -287,7 +287,7 @@ function updateElevator() {
     <a-entity
       v-if="showWelcome"
       text="
-      value:You are on a building room of 6x6 meters, and you will have to choose between different doors in each rooms, until you find the exit.
+      value:You are on a building roof of 6x6 meters, and you will have to choose between different doors in each rooms, until you find the exit.
       \n But careful, take the wrong door, and you'll die.;
       wrapCount: 60;
       width: 1.5;"

@@ -9,7 +9,7 @@ But beware: a timer is running (on your left wrist).
 - When the time runs out, you die. 
 - Entering the wrong room: you die.
 
-You have 25 seconds per room.
+You have 35 seconds per room.
 
 ### Included in the boilerplate:
 

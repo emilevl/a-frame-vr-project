@@ -29,7 +29,7 @@ function enterScene() {
         by choosing the right doors among the different doors in each room. To
         help you, you can analyse the map in the lift. But beware: a timer is
         running (on your left wrist). - When the time runs out, you die. -
-        Entering the wrong room: you die. You have 25 seconds per room.
+        Entering the wrong room: you die. You have 35 seconds per room.
       </p>
       <p v-if="!loaded">loading...</p>
       <button v-if="loaded" @click="enterScene()">Start</button>
