@@ -26,7 +26,7 @@ AFRAME.registerSystem('game-system', {
         if (this.rooms.length == 0) {
             this.rooms = Dom.getNodes('[data-role="room"]');
         } else {
-            if (this.secondsRemaining <= 15) {
+            if (this.secondsRemaining <= 10) {
                 this.handLeft.emit("time-almost-out")
             }
             this.camera.object3D.getWorldPosition(this.cameraPos)
@@ -41,7 +41,7 @@ AFRAME.registerSystem('game-system', {
 
                     if (room.getAttribute('data-visited') == "false") {
                         // start the timer
-                        this.secondsRemaining = 30;
+                        this.secondsRemaining = 25;
                         room.setAttribute('data-visited', "true");
                     }
                 }
