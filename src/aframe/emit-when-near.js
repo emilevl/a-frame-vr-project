@@ -1,10 +1,10 @@
 AFRAME.registerComponent('emit-when-near', {
   schema: {
-    target: {type: 'selector', default: '[camera]'},
-    distance: {type: 'number', default: 1},
-    event: {type: 'string', default: 'click'},
-    eventFar: {type: 'string', default: 'unclick'},
-    throttle: {type: 'number', default: 100},
+    target: { type: 'selector', default: '[camera]' },
+    distance: { type: 'number', default: 1 },
+    event: { type: 'string', default: 'click' },
+    eventFar: { type: 'string', default: 'unclick' },
+    throttle: { type: 'number', default: 100 },
   },
 
   init: function () {
@@ -21,12 +21,12 @@ AFRAME.registerComponent('emit-when-near', {
     if (distanceTo <= this.data.distance) {
       if (this.emiting) return;
       this.emiting = true;
-      this.el.emit(this.data.event, {collidingEntity: this.data.target}, false);
-      this.data.target.emit(this.data.event, {collidingEntity: this.el}, false);
+      this.el.emit(this.data.event, { collidingEntity: this.data.target }, false);
+      this.data.target.emit(this.data.event, { collidingEntity: this.el }, false);
     } else {
       if (!this.emiting) return;
-      this.el.emit(this.data.eventFar, {collidingEntity: this.data.target}, false);
-      this.data.target.emit(this.data.eventFar, {collidingEntity: this.el}, false);
+      this.el.emit(this.data.eventFar, { collidingEntity: this.data.target }, false);
+      this.data.target.emit(this.data.eventFar, { collidingEntity: this.el }, false);
       this.emiting = false;
     }
   },

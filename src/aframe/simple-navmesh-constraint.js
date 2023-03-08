@@ -51,7 +51,7 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
 
   update: function () {
     this.lastPosition = null;
-    this.excludes = this.data.exclude ? Array.from(document.querySelectorAll(this.data.exclude)):[];
+    this.excludes = this.data.exclude ? Array.from(document.querySelectorAll(this.data.exclude)) : [];
     const els = Array.from(document.querySelectorAll(this.data.navmesh));
     if (els === null) {
       console.warn('navmesh-physics: Did not match any elements');
@@ -66,16 +66,16 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
     const nextPosition = new THREE.Vector3();
     const tempVec = new THREE.Vector3();
     const scanPattern = [
-      [0,1], // Default the next location
-      [0,0.5], // Check that the path to that location was fine
-      [30,0.4], // A little to the side shorter range
-      [-30,0.4], // A little to the side shorter range
-      [60,0.2], // Moderately to the side short range
-      [-60,0.2], // Moderately to the side short range
-      [80,0.06], // Perpendicular very short range
-      [-80,0.06], // Perpendicular very short range
+      [0, 1], // Default the next location
+      [0, 0.5], // Check that the path to that location was fine
+      [30, 0.4], // A little to the side shorter range
+      [-30, 0.4], // A little to the side shorter range
+      [60, 0.2], // Moderately to the side short range
+      [-60, 0.2], // Moderately to the side short range
+      [80, 0.06], // Perpendicular very short range
+      [-80, 0.06], // Perpendicular very short range
     ];
-    const down = new THREE.Vector3(0,-1,0);
+    const down = new THREE.Vector3(0, -1, 0);
     const raycaster = new THREE.Raycaster();
     const gravity = -1;
     const maxYVelocity = 0.5;
@@ -104,7 +104,7 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
       scanPatternLoop:
       for (const [angle, distance] of scanPattern) {
         tempVec.subVectors(nextPosition, this.lastPosition);
-        tempVec.applyAxisAngle(down, angle*Math.PI/180);
+        tempVec.applyAxisAngle(down, angle * Math.PI / 180);
         tempVec.multiplyScalar(distance);
         tempVec.add(this.lastPosition);
         tempVec.y += maxYVelocity;
@@ -116,7 +116,7 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
         if (results.length) {
           // If it hit something we want to avoid then ignore it and stop looking
           for (const result of results) {
-            if(this.excludes.includes(result.object.el)) {
+            if (this.excludes.includes(result.object.el)) {
               results.splice(0);
               continue scanPatternLoop;
             }
@@ -124,7 +124,7 @@ AFRAME.registerComponent('simple-navmesh-constraint', {
           const hitPos = results[0].point;
           results.splice(0);
           hitPos.y += this.data.height;
-          if (nextPosition.y - (hitPos.y - yVel*2) > 0.01) {
+          if (nextPosition.y - (hitPos.y - yVel * 2) > 0.01) {
             yVel += Math.max(gravity * delta * 0.001, -maxYVelocity);
             hitPos.y = nextPosition.y + yVel;
           } else {

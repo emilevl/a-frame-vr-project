@@ -3,10 +3,10 @@ AFRAME.registerComponent('disable-in-vr', {
 
   schema: {
     // The component name to disable in VR/AR
-    component: {type: 'string', default: ''},
+    component: { type: 'string', default: '' },
     // Set this to true if you want to disable the component in flat 3d (desktop fullscreen mode of A-Frame)
-    disableInFlat3d: {type: 'boolean', default: false},
-    disableInAR: {type: 'boolean', default: true},
+    disableInFlat3d: { type: 'boolean', default: false },
+    disableInAR: { type: 'boolean', default: true },
   },
 
   init: function () {

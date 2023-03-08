@@ -1,5 +1,5 @@
 import * as Dom from '../utils/dom.js';
-import { ref, watch} from "vue";
+import { ref, watch } from "vue";
 import { showWholeGame } from '../utils/store.js';
 
 watch(showWholeGame, () => {
@@ -37,23 +37,23 @@ AFRAME.registerSystem('game-system', {
                 const bbox = new THREE.Box3().setFromObject(room.object3D);
                 if (bbox.containsPoint(this.cameraPos)) {
 
-                    if(room.getAttribute('data-safe-room') !== "true") {
+                    if (room.getAttribute('data-safe-room') !== "true") {
                         this.teleportCameraRig(0, 0, 10);
                         return;
                     }
 
-                    if(room.getAttribute('data-visited') == "false") {
+                    if (room.getAttribute('data-visited') == "false") {
                         // start the timer
-                                this.secondsRemaining = 30;
-                                room.setAttribute('data-visited', "true");
+                        this.secondsRemaining = 30;
+                        room.setAttribute('data-visited', "true");
                     }
                 }
             }
         }
         if (this.timerIsRunning) {
-            this.secondsRemaining = Math.round(this.secondsRemaining - dt/1000);
+            this.secondsRemaining = Math.round(this.secondsRemaining - dt / 1000);
             this.countdown.setAttribute('text', 'value', `${this.secondsRemaining} seconds`)
-            if (this.secondsRemaining <= 0 ) {
+            if (this.secondsRemaining <= 0) {
                 this.timeOut = true;
                 this.timerIsRunning = false;
                 this.countdown.setAttribute('text', 'value', "Timeout")
@@ -83,18 +83,18 @@ AFRAME.registerSystem('game-system', {
         this.data.camera.object3D.position.z = 0;
         // Rotate the rig if needed
         if (this.data.handleRotation) {
-          // Take the camera quaternion
-          const quaternion = new THREE.Quaternion();
-          quaternion.setFromEuler(new THREE.Euler(0, this.data.camera.object3D.rotation.y, 0));
-          // invert it to nullify the camera rotation
-          quaternion.invert();
-          // convert this.data.rot to a quaternion
-          const quaternionToApply = new THREE.Quaternion();
-          const rotRad = THREE.MathUtils.degToRad(rot);
-          quaternionToApply.setFromEuler(new THREE.Euler(0, rotRad, 0));
-          // combine the two quaternions and apply to the rig
-          quaternion.multiply(quaternionToApply);
-          this.data.rig.object3D.setRotationFromQuaternion(quaternion);
+            // Take the camera quaternion
+            const quaternion = new THREE.Quaternion();
+            quaternion.setFromEuler(new THREE.Euler(0, this.data.camera.object3D.rotation.y, 0));
+            // invert it to nullify the camera rotation
+            quaternion.invert();
+            // convert this.data.rot to a quaternion
+            const quaternionToApply = new THREE.Quaternion();
+            const rotRad = THREE.MathUtils.degToRad(rot);
+            quaternionToApply.setFromEuler(new THREE.Euler(0, rotRad, 0));
+            // combine the two quaternions and apply to the rig
+            quaternion.multiply(quaternionToApply);
+            this.data.rig.object3D.setRotationFromQuaternion(quaternion);
         }
     }
 

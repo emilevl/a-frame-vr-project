@@ -1,8 +1,8 @@
 AFRAME.registerComponent('hide-in-vr', {
   schema: {
     // Set this to true if you want to hide the entity in flat 3d (desktop fullscreen mode of A-Frame)
-    hideInFlat3d: {type: 'boolean', default: false},
-    hideInAR: {type: 'boolean', default: true},
+    hideInFlat3d: { type: 'boolean', default: false },
+    hideInAR: { type: 'boolean', default: true },
   },
 
   init: function () {

@@ -1,15 +1,15 @@
 AFRAME.registerComponent('life-like-automaton', {
   schema: {
-    resolution: {type: 'int', default: 512},
+    resolution: { type: 'int', default: 512 },
 
     // Change rules to explore different Automaton, the default rules ( B 3,S 23 ) are the one of the classic Game Of Life
-    birthRule: {type: 'array', default: [3]},
-    survivalRule: {type: 'array', default: [2, 3]},
+    birthRule: { type: 'array', default: [3] },
+    survivalRule: { type: 'array', default: [2, 3] },
     // for exemple try this one: B 678 S 45678
 
-    maxGen: {type: 'int', default: Infinity},
-    probAlive: {type: 'number', default: 0.5},
-    genPerSec: {type: 'int', default: 60},
+    maxGen: { type: 'int', default: Infinity },
+    probAlive: { type: 'number', default: 0.5 },
+    genPerSec: { type: 'int', default: 60 },
   },
 
   init: function () {
@@ -30,9 +30,9 @@ AFRAME.registerComponent('life-like-automaton', {
     this.material = this.el.getObject3D('mesh').material = new THREE.ShaderMaterial({
 
       uniforms: {
-        tex: {value: this.texture},
-        time: {value: 0},
-        resolution: {value: this.resolution}
+        tex: { value: this.texture },
+        time: { value: 0 },
+        resolution: { value: this.resolution }
       },
 
       vertexShader: /*glsl*/ `
@@ -69,7 +69,7 @@ AFRAME.registerComponent('life-like-automaton', {
     });
     // this.material.side = THREE.BackSide;
 
-    this.tick = AFRAME.utils.throttleTick(this.nextGen, 1000/this.data.genPerSec, this);
+    this.tick = AFRAME.utils.throttleTick(this.nextGen, 1000 / this.data.genPerSec, this);
 
   },
 

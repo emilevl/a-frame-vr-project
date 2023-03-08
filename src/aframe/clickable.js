@@ -1,6 +1,6 @@
 AFRAME.registerComponent('clickable', {
   schema: {
-    color: {type: 'color', default: 'black'}
+    color: { type: 'color', default: 'black' }
   },
 
   init: function () {

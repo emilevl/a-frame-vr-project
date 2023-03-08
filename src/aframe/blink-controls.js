@@ -162,13 +162,13 @@ AFRAME.registerComponent('blink-controls', {
         this.addedEvents.push([this.data.endEvents[i], this.onButtonUp])
         el.addEventListener(this.data.endEvents[i], this.onButtonUp)
       }
-    // Is a button for activation specified?
+      // Is a button for activation specified?
     } else if (data.button) {
       this.addedEvents.push([data.button + 'down', this.onButtonDown])
       this.addedEvents.push([data.button + 'up', this.onButtonUp])
       el.addEventListener(data.button + 'down', this.onButtonDown)
       el.addEventListener(data.button + 'up', this.onButtonUp)
-    // If none of the above, default to thumbstick-axis based activation
+      // If none of the above, default to thumbstick-axis based activation
     } else {
       this.thumbstickAxisActivation = true
     }
@@ -250,7 +250,7 @@ AFRAME.registerComponent('blink-controls', {
 
     // Create or update line mesh.
     if (!this.line ||
-        'curveLineWidth' in diff || 'curveNumberPoints' in diff || 'type' in diff) {
+      'curveLineWidth' in diff || 'curveNumberPoints' in diff || 'type' in diff) {
       this.line = this.createLine(data)
       this.line.material.opacity = this.data.hitOpacity
       this.line.material.transparent = this.data.hitOpacity < 1
@@ -262,7 +262,7 @@ AFRAME.registerComponent('blink-controls', {
     if (data.hitEntity) {
       this.hitEntity = data.hitEntity
     } else if (!this.hitEntity || 'hitCylinderColor' in diff || 'hitCylinderHeight' in diff ||
-               'hitCylinderRadius' in diff) {
+      'hitCylinderRadius' in diff) {
       // Remove previous entity, create new entity (could be more performant).
       if (this.hitEntity) { this.hitEntity.parentNode.removeChild(this.hitEntity) }
       this.hitEntity = this.createHitEntity(data)
@@ -400,14 +400,14 @@ AFRAME.registerComponent('blink-controls', {
     this.collisionEntities = collisionEntities
 
     // Update entity list on attach.
-    this.childAttachHandler = function childAttachHandler (evt) {
+    this.childAttachHandler = function childAttachHandler(evt) {
       if (!evt.detail.el.matches(data.collisionEntities)) { return }
       collisionEntities.push(evt.detail.el)
     }
     el.sceneEl.addEventListener('child-attached', this.childAttachHandler)
 
     // Update entity list on detach.
-    this.childDetachHandler = function childDetachHandler (evt) {
+    this.childDetachHandler = function childDetachHandler(evt) {
       if (!evt.detail.el.matches(data.collisionEntities)) { return }
       const index = collisionEntities.indexOf(evt.detail.el)
       if (index === -1) { return }
@@ -454,7 +454,7 @@ AFRAME.registerComponent('blink-controls', {
       rig.setAttribute('position', newRigLocalPosition)
 
       if (this.data.cameraRig) {
-        this.teleportOrigin.setAttribute('position', {x: 0, z: 0});
+        this.teleportOrigin.setAttribute('position', { x: 0, z: 0 });
       }
 
       // Also take the headset/camera rotation itself into account
@@ -514,7 +514,7 @@ AFRAME.registerComponent('blink-controls', {
 
     const intersects = this.raycaster.intersectObjects(meshes, true)
     if (intersects.length > 0 && !this.hit &&
-        this.isValidNormalsAngle(intersects[0].face.normal, intersects[0].object)) {
+      this.isValidNormalsAngle(intersects[0].face.normal, intersects[0].object)) {
       const point = intersects[0].point
 
       this.line.material.color.set(this.curveHitColor)
