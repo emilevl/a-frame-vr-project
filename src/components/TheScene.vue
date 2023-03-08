@@ -14,7 +14,6 @@ import TheFinalRoom from "./TheFinalRoom.vue";
 import WinRoom from "./WinRoom.vue";
 import MiddleRoom from "./MiddleRoom.vue";
 import "../aframe/game-system.js";
-import { showWholeGame } from "../utils/store";
 
 import "../aframe/life-like-automaton";
 
@@ -318,7 +317,7 @@ function updateElevator() {
     </a-entity>
     <a-entity
       geometry="primitive: plane; height: 0.35; width: 0.495"
-      position="-1.324 1.69 -0.4"
+      position="-1.320 1.69 -0.4"
       rotation="0 90 0"
       data-role="nav-mesh"
       material="src: #floor-map;"

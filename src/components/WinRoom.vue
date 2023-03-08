@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "vue";
-import { showWholeGame } from "../utils/store";
 
 defineProps({
   rotation: String,

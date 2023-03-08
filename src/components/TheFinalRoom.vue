@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import "../aframe/teleport-camera-rig.js";
+import { timerIsRunning } from '../utils/store.js';
 
 defineProps({
   rotation: String,
@@ -92,6 +93,7 @@ const allAssetsLoaded = ref(false);
         y: 0;
         z: 15;
       "
+      @click="timerIsRunning=false"
       material="color: crimson"
       height="0.05"
       radius="0.05"

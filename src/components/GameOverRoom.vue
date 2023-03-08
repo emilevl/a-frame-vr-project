@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { timerIsRunning } from '../utils/store.js';
 
 defineProps({
   rotation: String,
@@ -13,6 +14,7 @@ let textGameOver = ref("Game Over \n Press the button to be free");
 let nbClick = 0;
 
 function changeText() {
+  timerIsRunning.value = false;
   if (nbClick == 0 || nbClick == 1) {
     textGameOver.value = "Kidding, you're doomed";
   } else if (nbClick == 2) {

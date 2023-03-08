@@ -22,7 +22,7 @@ function enterScene() {
   <div id="onboarding" v-if="showOnboarding">
     <div>
       <h1>Escape room</h1>
-      <p>
+      <p id="text-intro">
         The game is an escape room based on the series "Alice in Borderland", in
         the first episode. It has been adapted to make the puzzle solving more
         "realistic" than in the series. The principle is to get out of the floor
@@ -193,5 +193,9 @@ a {
   color: black;
   border: none;
   cursor: pointer;
+}
+
+#onboarding #text-intro {
+  text-align: left;
 }
 </style>

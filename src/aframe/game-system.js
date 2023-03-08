@@ -1,10 +1,7 @@
 import * as Dom from '../utils/dom.js';
 import { ref, watch } from "vue";
-import { showWholeGame } from '../utils/store.js';
+import { timerIsRunning } from '../utils/store.js';
 
-watch(showWholeGame, () => {
-    console.log(showWholeGame.value)
-})
 AFRAME.registerSystem('game-system', {
     schema: {
         enabled: { type: 'boolean', default: false },
@@ -19,9 +16,9 @@ AFRAME.registerSystem('game-system', {
         this.cameraPos = new THREE.Vector3();
         this.cameraRig = Dom.getNode('#camera-rig')
         // console.log(this.camera);
-        this.secondsRemaining = 90;
+        this.secondsRemaining = 120;
         this.timeOut = false;
-        this.timerIsRunning = true;
+        timerIsRunning.value = true;
         this.tick = AFRAME.utils.throttleTick(this.tick, 1000, this);
     },
 
@@ -50,12 +47,12 @@ AFRAME.registerSystem('game-system', {
                 }
             }
         }
-        if (this.timerIsRunning) {
+        if (timerIsRunning) {
             this.secondsRemaining = Math.round(this.secondsRemaining - dt / 1000);
             this.countdown.setAttribute('text', 'value', `${this.secondsRemaining} seconds`)
             if (this.secondsRemaining <= 0) {
                 this.timeOut = true;
-                this.timerIsRunning = false;
+                timerIsRunning.value = false;
                 this.countdown.setAttribute('text', 'value', "Timeout")
                 this.teleportCameraRig(0, 0, 10)
                 return;
