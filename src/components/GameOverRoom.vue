@@ -13,22 +13,22 @@ defineProps({
   let nbClick = 0;
 
   function changeText() {
-    if (nbClick == 0 || nbClick == 1 || nbClick == 2) {
+    if (nbClick == 0 || nbClick == 1) {
       textGameOver.value = "Kidding, you're doomed"
-    } else if (nbClick == 3) {
+    } else if (nbClick == 2) {
       textGameOver.value = "Stop pressing, it won't change anything..."
-    }else if (nbClick == 4) {
+    }else if (nbClick == 3) {
       textGameOver.value = "Come on, you don't have something to do ? "
-    }else if (nbClick == 5) {
+    }else if (nbClick == 4) {
       textGameOver.value = "Auto explode in 3... 2... 1... "
       setTimeout(function () { 
           textGameOver.value = "Lol, I don't have time to make the game explode. " 
       } , 1500)
-    } else if (nbClick == 6) {
-      textGameOver.value = "No more ideas. Stop clicking, you're losing time." 
+    } else if (nbClick == 5) {
+      textGameOver.value = "No more ideas. But keep on clicking" 
+    }else if (nbClick == 10) {
+      textGameOver.value = "Yeah, continue..." 
     }else if (nbClick == 15) {
-      textGameOver.value = "I told you, you'd lose time !" 
-    }else if (nbClick == 21) {
       window.location.href = 'https://www.youtube.com/watch?v=rSimk1i72J8'
     }
     nbClick++
