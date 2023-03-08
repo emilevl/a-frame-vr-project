@@ -3,7 +3,6 @@
   import TheOnboarding from './components/TheOnboarding.vue';
   import TheOverlay from './components/TheOverlay.vue';
   import TheScene from './components/TheScene.vue';
-  import ImBox from './components/ImBox.vue';
 import TheNavMesh from './components/TheNavMesh.vue';
 
   const scale = ref(1);
